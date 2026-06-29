@@ -76,11 +76,17 @@ function init() {
   renderDrinks();
 }
 
+function closeMobileMenu() {
+  document.querySelector('.nav-links').classList.remove('open');
+  const overlay = document.getElementById('nav-overlay');
+  if (overlay) { overlay.remove(); document.body.style.overflow = ''; }
+}
+
 function showPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const el = document.getElementById('page-' + page);
   if (el) el.classList.add('active');
-  document.querySelector('.nav-links').classList.remove('open');
+  closeMobileMenu();
   if (page === 'homework') showHwSubjects();
   if (page === 'drinks') showDrinkList();
 }
